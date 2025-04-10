@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Library</title>
+    <link rel="icon" href="/favicon.ico">
+    <style>
+        body {
+            background-color: #2e2e2e;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 40px;
+        }
+        h2 {
+            color: #ffc107;
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .book-card {
+            background-color: #3d3d3d;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+<h2>📚 My Library</h2>
+
+<div class="section">
+    <h3>Borrowed Books</h3>
+    <div th:if="${#lists.isEmpty(borrowedBooks)}">No books currently borrowed.</div>
+    <div th:each="book : ${borrowedBooks}" class="book-card">
+        <p><strong>Title:</strong> <span th:text="${book.title}"></span></p>
+        <p><strong>Author:</strong> <span th:text="${book.author}"></span></p>
+    </div>
+</div>
+
+<div class="section">
+    <h3>Reserved Books</h3>
+    <div th:if="${#lists.isEmpty(reservedBooks)}">No books currently reserved.</div>
+    <div th:each="res : ${reservedBooks}" class="book-card">
+        <p><strong>Title:</strong> <span th:text="${res.book.title}"></span></p>
+        <p><strong>Reserved On:</strong> <span th:text="${#temporals.format(res.reservationDate, 'dd MMM yyyy HH:mm')}"></span></p>
+    </div>
+</div>
+
+</body>
+</html>

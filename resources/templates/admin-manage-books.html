@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Books</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<h2>📚 Book Management</h2>
+
+<a th:href="@{/admin/books/add}">➕ Add New Book</a>
+
+<hr/>
+
+<h3>All Books</h3>
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Available Copies</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.title}">Title</td>
+        <td th:text="${book.author}">Author</td>
+        <td th:text="${book.genre}">Genre</td>
+        <td th:text="${book.availableCopies}">0</td>
+        <td>
+            <a th:href="@{'/admin/books/edit/' + ${book.id}}">✏️ Edit</a>
+            |
+            <a th:href="@{'/admin/books/delete/' + ${book.id}}"
+               onclick="return confirm('Are you sure?')">🗑️ Delete</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

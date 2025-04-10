@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #444;
+            display: inline-block;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 5px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 250px;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #ffb300;
+        }
+
+        .error {
+            color: #ff4c4c;
+            margin-top: 10px;
+        }
+
+        .login-redirect {
+            margin-top: 20px;
+        }
+
+        .login-redirect a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+
+        .login-redirect a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h2>📝 Create Your Account</h2>
+
+<form th:action="@{/register}" method="post" autocomplete="off">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" autocomplete="off" placeholder="Enter username" required/><br/>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" autocomplete="off" placeholder="Enter your email" required/><br/>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" autocomplete="new-password" placeholder="Enter password" required/><br/>
+
+    <button type="submit">Register</button>
+</form>
+
+<p class="login-redirect">
+    Already have an account? <a href="/login">Login here</a>.
+</p>
+
+</body>
+</html>

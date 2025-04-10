@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #444;
+            display: inline-block;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 5px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 250px;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #ffb300;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #ff4c4c;
+        }
+
+        .success {
+            color: #90ee90;
+        }
+    </style>
+</head>
+<body>
+
+<h2>🔐 Login to Your Account</h2>
+
+<form th:action="@{/login}" method="post">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" placeholder="Enter username" required/>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" placeholder="Enter password" required/>
+
+    <button type="submit">Login</button>
+</form>
+
+<div class="message error" th:if="${param.error}">
+    Invalid username or password.
+</div>
+
+<div class="message success" th:if="${param.logout}">
+    You have been logged out.
+</div>
+
+</body>
+</html>

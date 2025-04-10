@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h2>Admin Dashboard</h2>
+
+<nav>
+    <a th:href="@{/admin/books}">📚 Manage Books</a> |
+    <a th:href="@{/admin/users}">👥 Manage Users (optional)</a> |
+    <a th:href="@{/logout}">🚪 Logout</a>
+</nav>
+
+<p>Welcome, Admin! Here you can manage the system.</p>
+</body>
+</html>

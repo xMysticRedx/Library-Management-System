@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Library Home</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('/images/library-banner.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 100px 20px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .buttons a,
+        .buttons form {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .buttons a {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+
+        .buttons a:hover {
+            background-color: #ffdb4d;
+        }
+
+        .buttons button {
+            background-color: #ff4c4c;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .buttons button:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+<div class="overlay">
+    <h1>📚 Welcome to Our Library</h1>
+    <p>Reserve your favorite books online and pick them up at our location.</p>
+
+    <div class="buttons">
+
+        <a th:if="${not #authorization.expression('isAuthenticated()')}" href="/login">🔐 Login</a>
+        <a th:if="${not #authorization.expression('isAuthenticated()')}" href="/register">📝 Register</a>
+
+        <a href="/books">📖 Browse Books</a>
+
+        <form th:if="${#authorization.expression('isAuthenticated()')}" th:action="@{/logout}" method="post" style="display:inline;">
+            <button type="submit">🚪 Logout</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
